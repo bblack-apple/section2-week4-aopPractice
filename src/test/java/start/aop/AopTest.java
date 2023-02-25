@@ -12,6 +12,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 @Slf4j
 @SpringBootTest
+@import(Aspect1.class)
 public class AopTest {
 
     @Autowired
@@ -34,6 +35,7 @@ public class AopTest {
 
     @Test
     void exception() {
-        assertThatThrownBy(() -> orderService.orderItem("ex")).isInstanceOf(IllegalStateException.class);
+        assertThatThrownBy(() -> orderService.orderItem("ex"))
+                .isInstanceOf(IllegalStateException.class);
     }
 }
